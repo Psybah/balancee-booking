@@ -1,8 +1,8 @@
 
 import React, { createContext, useContext, useReducer } from "react";
 
-export type CarType = "sedan" | "suv" | "truck" | "sports" | "electric";
-export type RepairService = "oilChange" | "tireRotation" | "brakeService" | "engineRepair" | "batteryReplacement";
+export type CarType = "sedan" | "suv" | "truck" | "sports" | "electric" | "minibus" | "pickup" | "tricycle" | "commercial";
+export type RepairService = "oilChange" | "tireRotation" | "brakeService" | "engineRepair" | "batteryReplacement" | "acService" | "suspension" | "diagnostics" | "carWash";
 
 export interface Station {
   id: string;
@@ -174,32 +174,48 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({ child
       // Simulate API call with a delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Mock data based on selections
+      // Mock data based on selections with Nigerian locations
       const mockStations: Station[] = [
         {
           id: "station-1",
-          name: "Balanceè Downtown",
-          address: "123 Main St, City Center",
+          name: "Balanceè Ikeja",
+          address: "14 Allen Avenue, Ikeja, Lagos",
           distance: 1.2,
-          services: ["oilChange", "tireRotation", "brakeService", "batteryReplacement"],
+          services: ["oilChange", "tireRotation", "brakeService", "batteryReplacement", "acService"],
           rating: 4.8,
         },
         {
           id: "station-2",
-          name: "Balanceè Eastside",
-          address: "456 Oak Ave, East District",
+          name: "Balanceè Lekki",
+          address: "Admiralty Way, Lekki Phase 1, Lagos",
           distance: 2.5,
-          services: ["oilChange", "tireRotation", "engineRepair"],
+          services: ["oilChange", "tireRotation", "engineRepair", "suspension", "diagnostics"],
           rating: 4.6,
         },
         {
           id: "station-3",
-          name: "Balanceè Westside",
-          address: "789 Pine Blvd, West Valley",
+          name: "Balanceè Victoria Island",
+          address: "24 Adeola Odeku Street, Victoria Island, Lagos",
           distance: 3.8,
-          services: ["tireRotation", "brakeService", "engineRepair", "batteryReplacement"],
+          services: ["tireRotation", "brakeService", "engineRepair", "batteryReplacement", "carWash"],
           rating: 4.7,
         },
+        {
+          id: "station-4",
+          name: "Balanceè Abuja Central",
+          address: "Plot 5, Wuse II, Abuja FCT",
+          distance: 4.2,
+          services: ["oilChange", "acService", "suspension", "diagnostics", "carWash"],
+          rating: 4.9,
+        },
+        {
+          id: "station-5",
+          name: "Balanceè Port Harcourt",
+          address: "32 Aba Road, GRA Phase 2, Port Harcourt",
+          distance: 5.1,
+          services: ["engineRepair", "brakeService", "diagnostics", "suspension", "batteryReplacement"],
+          rating: 4.5,
+        }
       ];
 
       // Filter by service

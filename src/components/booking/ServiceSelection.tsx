@@ -1,7 +1,6 @@
-
 import { useEffect } from "react";
 import { useBooking } from "@/contexts/BookingContext";
-import { carTypeOptions, serviceOptions } from "@/utils/helpers";
+import { carTypeOptions, serviceOptions, getCarTypeImage } from "@/utils/helpers";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { 
@@ -13,10 +12,19 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Clock, Car } from "lucide-react";
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from "@/components/ui/carousel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function ServiceSelection() {
   const { state, setCarType, setService, fetchStations } = useBooking();
   const { carType, service, errors } = state;
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (carType && service) {
@@ -24,13 +32,85 @@ export function ServiceSelection() {
     }
   }, [carType, service]);
 
-  // Car images mapping
-  const carImages = {
-    sedan: "/lovable-uploads/293a696e-17f4-42c7-8420-bb63c89aa14c.png",
-    suv: "/lovable-uploads/293a696e-17f4-42c7-8420-bb63c89aa14c.png",
-    truck: "/lovable-uploads/293a696e-17f4-42c7-8420-bb63c89aa14c.png",
-    sports: "/lovable-uploads/293a696e-17f4-42c7-8420-bb63c89aa14c.png",
-    electric: "/lovable-uploads/293a696e-17f4-42c7-8420-bb63c89aa14c.png",
+  const renderCarTypes = () => {
+    if (isMobile) {
+      return (
+        <div className="w-full pt-4 pb-8 relative">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {carTypeOptions.map((option) => (
+                <CarouselItem key={option.value} className="basis-3/4 pl-1 md:basis-1/3 lg:basis-1/5">
+                  <div 
+                    className={`cursor-pointer transition-all transform hover:scale-105 animate-fade-in`}
+                    onClick={() => setCarType(option.value as any)}
+                  >
+                    <div 
+                      className={`rounded-lg overflow-hidden border-2 transition-all ${
+                        carType === option.value
+                          ? "border-balancee-blue dark:border-balancee-orange shadow-lg"
+                          : "border-transparent"
+                      }`}
+                    >
+                      <div className="relative aspect-video bg-accent/20 overflow-hidden">
+                        <img 
+                          src={option.image}
+                          alt={option.label} 
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <div className={`py-2 px-3 text-center font-medium text-sm ${
+                        carType === option.value
+                          ? "bg-balancee-blue text-white dark:bg-balancee-orange"
+                          : "bg-muted"
+                      }`}>
+                        {option.label}
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0" />
+            <CarouselNext className="right-0" />
+          </Carousel>
+        </div>
+      );
+    }
+
+    return (
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+        {carTypeOptions.map((option) => (
+          <div 
+            key={option.value} 
+            className={`cursor-pointer transition-all transform hover:scale-105 animate-fade-in`}
+            onClick={() => setCarType(option.value as any)}
+          >
+            <div 
+              className={`rounded-lg overflow-hidden border-2 transition-all ${
+                carType === option.value
+                  ? "border-balancee-blue dark:border-balancee-orange shadow-lg"
+                  : "border-transparent"
+              }`}
+            >
+              <div className="relative aspect-video bg-accent/20 overflow-hidden">
+                <img 
+                  src={option.image}
+                  alt={option.label} 
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className={`py-2 px-3 text-center font-medium text-sm ${
+                carType === option.value
+                  ? "bg-balancee-blue text-white dark:bg-balancee-orange"
+                  : "bg-muted"
+              }`}>
+                {option.label}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -44,38 +124,8 @@ export function ServiceSelection() {
             <Car className="h-5 w-5 text-balancee-blue" /> Vehicle Type
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {carTypeOptions.map((option) => (
-              <div 
-                key={option.value} 
-                className={`cursor-pointer transition-all transform hover:scale-105 animate-fade-in`}
-                onClick={() => setCarType(option.value as any)}
-              >
-                <div 
-                  className={`rounded-lg overflow-hidden border-2 transition-all ${
-                    carType === option.value
-                      ? "border-balancee-blue dark:border-balancee-orange shadow-lg"
-                      : "border-transparent"
-                  }`}
-                >
-                  <div className="relative aspect-video bg-accent/20 overflow-hidden">
-                    <img 
-                      src={carImages[option.value as keyof typeof carImages]} 
-                      alt={option.label} 
-                      className="object-contain w-full h-full p-2"
-                    />
-                  </div>
-                  <div className={`py-2 px-3 text-center font-medium text-sm ${
-                    carType === option.value
-                      ? "bg-balancee-blue text-white dark:bg-balancee-orange"
-                      : "bg-muted"
-                  }`}>
-                    {option.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {renderCarTypes()}
+          
           {errors.carType && (
             <p className="text-destructive text-sm mt-1">{errors.carType}</p>
           )}
