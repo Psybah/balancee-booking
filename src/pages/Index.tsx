@@ -3,24 +3,30 @@ import { BookingSummary } from "../components/booking/BookingSummary";
 import { ServiceSelection } from "../components/booking/ServiceSelection";
 import { StationSelection } from "../components/booking/StationSelection";
 import { TimeSlotSelection } from "../components/booking/TimeSlotSelection";
+import { BookingSteps } from "../components/booking/BookingSteps";
 import { Layout } from "../components/Layout";
+import { useBooking } from "../contexts/BookingContext";
 
 const Index = () => {
+  const { state } = useBooking();
+  const { carType, service, selectedStation } = state;
+
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">Smart Repair Booking</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Book your car repair service in minutes. Our system helps you find the nearest stations
-            offering the services you need, with real-time availability.
-          </p>
-        </div>
-
-        <div className="space-y-6">
+      <div className="max-w-5xl mx-auto">
+        <BookingSteps />
+        
+        <div className="space-y-8 mt-8">
           <ServiceSelection />
-          <StationSelection />
-          <TimeSlotSelection />
+          
+          {carType && service && (
+            <StationSelection />
+          )}
+          
+          {carType && service && selectedStation && (
+            <TimeSlotSelection />
+          )}
+          
           <BookingSummary />
         </div>
       </div>

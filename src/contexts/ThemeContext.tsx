@@ -4,11 +4,20 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 type ThemeContextType = {
   isDarkMode: boolean;
   toggleTheme: () => void;
+  setTheme: (theme: 'dark' | 'light') => void;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+type ThemeProviderProps = {
+  children: React.ReactNode;
+  defaultTheme?: 'dark' | 'light';
+};
+
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ 
+  children, 
+  defaultTheme = 'light'
+}) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
     return savedTheme 
@@ -29,8 +38,17 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setIsDarkMode((prev) => !prev);
   };
 
+  const setTheme = (theme: 'dark' | 'light') => {
+    setIsDarkMode(theme === 'dark');
+  };
+
+  // Set default theme on initial render
+  useEffect(() => {
+    setTheme(defaultTheme);
+  }, [defaultTheme]);
+
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
