@@ -3,7 +3,7 @@
 
 ## Overview
 
-Balanceè is a modern web application that allows users in Nigeria to book car service appointments at stations near them. The platform provides a seamless interface for selecting service types, finding nearby stations, and booking time slots.
+Balanceè is a modern web application that allows users in Nigeria to book car service appointments at stations near them. This platform provides a seamless mock interface for selecting service types, finding nearby stations, and booking time slots.
 
 ## Features
 
@@ -44,7 +44,7 @@ This project follows a component-based architecture, with special attention to:
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/psybah/balancee-booking.git
 
 # Navigate to project directory
 cd balancee-booking
@@ -84,7 +84,6 @@ src/
 - **Glass Cards**: Implemented glass-morphism design for a modern, elegant UI
 - **Station Map**: Added a map view toggle with placeholder for future integration
 - **Time Slot Grouping**: Time slots are organized by morning, afternoon, and evening for better user experience
-- **12-hour Time Format**: Using 12-hour format (AM/PM) for better readability
 - **Dark Mode**: Full theme support with inverted logo in dark mode
 
 ## Future Enhancements
@@ -97,4 +96,4 @@ src/
 
 ## License
 
-© Balanceè Nigeria. All rights reserved.
+© Cybersmith. All rights reserved.

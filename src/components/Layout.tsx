@@ -14,7 +14,7 @@ export function Layout({
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/293a696e-17f4-42c7-8420-bb63c89aa14c.png" 
+              src="/logo.png" 
               alt="Balanceè Logo" 
               className={`h-8 w-auto ${isDarkMode ? 'invert' : ''}`} 
             />
