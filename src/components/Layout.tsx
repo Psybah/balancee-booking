@@ -1,16 +1,24 @@
 
 import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "../contexts/ThemeContext";
+
 export function Layout({
   children
 }: {
   children: React.ReactNode;
 }) {
+  const { isDarkMode } = useTheme();
+  
   return <div className="min-h-screen">
       <header className="sticky top-0 z-50 w-full border-b backdrop-blur-lg bg-background/80">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center space-x-2">
-            <img src="/lovable-uploads/293a696e-17f4-42c7-8420-bb63c89aa14c.png" alt="Balanceè Logo" className="h-8 w-auto" />
-            <span className="font-semibold text-lg hidden sm:inline-block">Balanceè</span>
+            <img 
+              src="/lovable-uploads/293a696e-17f4-42c7-8420-bb63c89aa14c.png" 
+              alt="Balanceè Logo" 
+              className={`h-8 w-auto ${isDarkMode ? 'invert' : ''}`} 
+            />
+            
           </div>
           <ThemeToggle />
         </div>

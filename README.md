@@ -1,73 +1,100 @@
-# Welcome to your Lovable project
 
-## Project info
+# Balanceè - Smart Car Service Booking Platform
 
-**URL**: https://lovable.dev/projects/0c03e53b-1424-4760-b732-42652bbad5b8
+## Overview
 
-## How can I edit this code?
+Balanceè is a modern web application that allows users in Nigeria to book car service appointments at stations near them. The platform provides a seamless interface for selecting service types, finding nearby stations, and booking time slots.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- **Service Selection**: Choose from different service types based on your vehicle
+- **Station Finder**: Find repair stations near you with distance shown in kilometers
+- **Interactive Map View**: Visual representation of available stations (coming soon)
+- **Time Slot Booking**: View and select available time slots with expandable sections
+- **Dark Mode Support**: Full dark mode implementation with inverted logo for better visibility
+- **Responsive Design**: Works seamlessly across mobile, tablet, and desktop devices
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0c03e53b-1424-4760-b732-42652bbad5b8) and start prompting.
+## Technology Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend Framework**: React with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **State Management**: React Context API
+- **Data Fetching**: TanStack Query
+- **Icons**: Lucide React
 
-**Use your preferred IDE**
+## Development Approach
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+This project follows a component-based architecture, with special attention to:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Code Organization**: Feature-based file structure
+- **State Management**: Centralized booking state with context providers
+- **UI/UX Design**: Glass-morphism styling with responsive layouts
+- **Accessibility**: Semantic HTML and ARIA attributes where appropriate
+- **Performance**: Optimized rendering and code splitting
 
-Follow these steps:
+## Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Node.js & npm - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Installation
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to project directory
+cd balancee-booking
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Build for Production
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Create optimized production build
+npm run build
 
-**Use GitHub Codespaces**
+# Preview production build locally
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/         # UI components
+│   ├── booking/        # Booking-specific components
+│   └── ui/             # Core UI components
+├── contexts/           # React context providers
+├── hooks/              # Custom React hooks
+├── pages/              # Page components
+└── utils/              # Helper functions
+```
 
-This project is built with:
+## Design Decisions
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Glass Cards**: Implemented glass-morphism design for a modern, elegant UI
+- **Station Map**: Added a map view toggle with placeholder for future integration
+- **Time Slot Grouping**: Time slots are organized by morning, afternoon, and evening for better user experience
+- **12-hour Time Format**: Using 12-hour format (AM/PM) for better readability
+- **Dark Mode**: Full theme support with inverted logo in dark mode
 
-## How can I deploy this project?
+## Future Enhancements
 
-Simply open [Lovable](https://lovable.dev/projects/0c03e53b-1424-4760-b732-42652bbad5b8) and click on Share -> Publish.
+- Integration with real maps API for interactive station locations
+- User authentication and profile management
+- Past bookings history and management
+- Payment integration
+- Mobile app development
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+© Balanceè Nigeria. All rights reserved.
