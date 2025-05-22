@@ -43,7 +43,16 @@ export function Layout({
       <footer className="border-t py-6 md:py-0 bg-background/80 backdrop-blur-lg">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center h-16">
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Balanceè Nigeria. All rights reserved.
+            &copy; {new Date().getFullYear()}{' '}
+            <a
+              href="https://github.com/psybah"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Cybersmith
+            </a>
+            . All rights reserved.
           </div>
           <div className="mt-2 md:mt-0 text-sm text-muted-foreground">
             Smartest way to book your car service
