@@ -20,7 +20,7 @@ Balanceè is a modern web application that allows users in Nigeria to book car s
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS
 - **UI Components**: shadcn/ui
-- **State Management**: React Context API
+- **State Management**: React Context API with Reducer Pattern
 - **Data Fetching**: TanStack Query
 - **Icons**: Lucide React
 
@@ -28,8 +28,8 @@ Balanceè is a modern web application that allows users in Nigeria to book car s
 
 This project follows a component-based architecture, with special attention to:
 
-- **Code Organization**: Feature-based file structure
-- **State Management**: Centralized booking state with context providers
+- **Code Organization**: Feature-based file structure with modular components
+- **State Management**: Centralized booking state with context providers and reducers
 - **UI/UX Design**: Glass-morphism styling with responsive layouts
 - **Accessibility**: Semantic HTML and ARIA attributes where appropriate
 - **Performance**: Optimized rendering and code splitting
@@ -76,6 +76,9 @@ src/
 ├── contexts/           # React context providers
 ├── hooks/              # Custom React hooks
 ├── pages/              # Page components
+├── reducers/           # State reducers
+├── services/           # API and service functions
+├── types/              # TypeScript type definitions
 └── utils/              # Helper functions
 ```
 
@@ -83,8 +86,10 @@ src/
 
 - **Glass Cards**: Implemented glass-morphism design for a modern, elegant UI
 - **Station Map**: Added a map view toggle with placeholder for future integration
-- **Time Slot Grouping**: Time slots are organized by morning, afternoon, and evening for better user experience
+- **Time Slot Grouping**: Time slots grouped by morning, afternoon
+- **12-hour Time Format**: Using 12-hour format (AM/PM) for better readability
 - **Dark Mode**: Full theme support with inverted logo in dark mode
+- **Modular Architecture**: Code organized into small, focused files for better maintainability
 
 ## Future Enhancements
 
