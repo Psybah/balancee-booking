@@ -2,14 +2,14 @@
 import { CarType, RepairService } from "../contexts/BookingContext";
 
 export const carTypeOptions = [
-  { value: "sedan", label: "Sedan", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80" },
-  { value: "suv", label: "SUV", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80" },
-  { value: "truck", label: "Truck", image: "https://images.unsplash.com/photo-1541899408-e12486dcc5bf?auto=format&fit=crop&q=80" },
+  { value: "sedan", label: "Sedan", image: "https://sellatease.com/public-blog/wp-content/uploads/2024/06/1998001_2003_Corolla_S-5-1500x900-1-780x470.jpg" },
+  { value: "suv", label: "SUV", image: "https://media.cdn-jaguarlandrover.com/api/v2/images/99903/w/1600/h/900.jpg" },
+  { value: "truck", label: "Truck", image: "https://www.sinotrucknigeria.com/wp-content/uploads/2024/08/HOWO-Cargo-Truck-1-300x300.jpg" },
   { value: "sports", label: "Sports Car", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80" },
   { value: "electric", label: "Electric Vehicle", image: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&q=80" },
-  { value: "minibus", label: "Minibus", image: "https://images.unsplash.com/photo-1616455579100-2ceaa4eb2d37?auto=format&fit=crop&q=80" },
-  { value: "pickup", label: "Pick-up", image: "https://images.unsplash.com/photo-1604605801370-3e6d2fbdf482?auto=format&fit=crop&q=80" },
-  { value: "tricycle", label: "Tricycle (Keke)", image: "https://images.unsplash.com/photo-1630146406290-7cef8e7fb49f?auto=format&fit=crop&q=80" },
+  { value: "minibus", label: "Minibus", image: "https://nigeriansearchguide.com/wp-content/uploads/2023/10/Cost-Of-Shuttle-Mini-Buses-Korope-In-Nigeria.jpeg" },
+  { value: "pickup", label: "Pick-up", image: "https://cdn.businessday.ng/2019/04/Ford-Ranger-Pick-Up.jpg" },
+  { value: "tricycle", label: "Tricycle (Keke)", image: "https://cdn.punchng.com/wp-content/uploads/2016/07/24220616/KEKE-MARWA.jpg" },
   { value: "commercial", label: "Commercial Bus", image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&q=80" },
 ];
 

@@ -24,16 +24,16 @@ export function Layout({
         </div>
       </header>
       
-      <div className="relative bg-gradient-to-r from-balancee-cream to-white dark:from-gray-900 dark:to-gray-800 py-16">
+      <div className="relative bg-gradient-to-r from-balancee-cream to-white dark:from-gray-900 dark:to-gray-800 py-8 md:py-16">
         <div className="container mx-auto px-4 flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 md:mb-4 text-gradient animate-fade-in">
             Smart Car Service Booking
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in animation-delay-200">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-xl sm:max-w-2xl mx-auto animate-fade-in animation-delay-200">
             Find and book the perfect service for your vehicle with real-time availability at stations near you in Nigeria.
           </p>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-16 md:h-24 bg-gradient-to-t from-background to-transparent"></div>
       </div>
 
       <main className="container mx-auto px-4 py-8">

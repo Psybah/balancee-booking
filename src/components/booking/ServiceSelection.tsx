@@ -1,24 +1,14 @@
-
 import { useEffect } from "react";
 import { useBooking } from "@/contexts/BookingContext";
 import { carTypeOptions, serviceOptions } from "@/utils/helpers";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue 
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Clock, Car } from "lucide-react";
 import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
+  Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious 
 } from "@/components/ui/carousel";
 
 export function ServiceSelection() {
@@ -32,73 +22,69 @@ export function ServiceSelection() {
   }, [carType, service]);
 
   return (
-    <Card className="p-6 glass-card animate-fade-in cosmic-gradient">
-      <h2 className="text-2xl font-semibold mb-4">Select Your Vehicle & Service</h2>
-      <Separator className="my-4" />
+    <Card className="p-4 sm:p-6 glass-card animate-fade-in cosmic-gradient">
+      <h2 className="text-xl sm:text-2xl font-semibold">Vehicle & Service</h2>
+      <Separator className="my-3" />
       
-      <div className="space-y-8">
+      <div className="space-y-4 sm:space-y-6">
         <div>
-          <h3 className="text-lg font-medium mb-3 flex items-center gap-2">
-            <Car className="h-5 w-5 text-balancee-blue" /> Vehicle Type
+          <h3 className="text-base sm:text-lg font-medium mb-2 flex items-center gap-2">
+            <Car className="h-4 w-4 sm:h-5 sm:w-5 text-balancee-blue" /> Vehicle Type
           </h3>
           
-          <div className="w-full pt-4 pb-4 relative">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {carTypeOptions.map((option) => (
-                  <CarouselItem key={option.value} className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
-                    <div 
-                      className={`cursor-pointer transition-all transform hover:scale-105 animate-fade-in`}
-                      onClick={() => setCarType(option.value as any)}
-                    >
-                      <div 
-                        className={`rounded-lg overflow-hidden border-2 transition-all ${
-                          carType === option.value
-                            ? "border-balancee-blue dark:border-balancee-orange shadow-lg"
-                            : "border-transparent"
-                        }`}
-                      >
-                        <div className="relative aspect-video bg-accent/20 overflow-hidden">
-                          <img 
-                            src={option.image}
-                            alt={option.label} 
-                            className="object-cover w-full h-full"
-                          />
-                        </div>
-                        <div className={`py-2 px-3 text-center font-medium text-sm ${
-                          carType === option.value
-                            ? "bg-balancee-blue text-white dark:bg-balancee-orange"
-                            : "bg-muted"
-                        }`}>
-                          {option.label}
-                        </div>
+          <Carousel className="w-full">
+            <CarouselContent>
+              {carTypeOptions.map((option) => (
+                <CarouselItem key={option.value} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                  <div 
+                    className="cursor-pointer hover:scale-105 transition-all animate-fade-in"
+                    onClick={() => setCarType(option.value as any)}
+                  >
+                    <div className={`rounded-lg overflow-hidden border-2 ${
+                      carType === option.value
+                        ? "border-balancee-blue dark:border-balancee-orange shadow-md"
+                        : "border-transparent"
+                    }`}>
+                      <div className="relative aspect-video bg-accent/20">
+                        <img 
+                          src={option.image}
+                          alt={option.label} 
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <div className={`py-1 px-2 text-center text-xs sm:text-sm font-medium ${
+                        carType === option.value
+                          ? "bg-balancee-blue text-white dark:bg-balancee-orange"
+                          : "bg-muted"
+                      }`}>
+                        {option.label}
                       </div>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-0" />
-              <CarouselNext className="right-0" />
-            </Carousel>
-          </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-2 sm:left-0 h-8 w-8" />
+            <CarouselNext className="-right-2 sm:right-0 h-8 w-8" />
+          </Carousel>
           
           {errors.carType && (
-            <p className="text-destructive text-sm mt-1">{errors.carType}</p>
+            <p className="text-destructive text-xs sm:text-sm mt-1">{errors.carType}</p>
           )}
         </div>
 
         <div className="animate-fade-in animation-delay-200">
-          <h3 className="text-lg font-medium mb-3 flex items-center gap-2">
-            <Clock className="h-5 w-5 text-balancee-orange" /> Service Type
+          <h3 className="text-base sm:text-lg font-medium mb-2 flex items-center gap-2">
+            <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-balancee-orange" /> Service Type
           </h3>
           
-          <div className="md:flex gap-6">
-            <div className="md:w-1/3 mb-4 md:mb-0">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6">
+            <div className="w-full sm:w-1/3">
               <Select
                 value={service || ""}
                 onValueChange={(value) => setService(value as any)}
               >
-                <SelectTrigger className="w-full">
+                <SelectTrigger>
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
@@ -110,26 +96,26 @@ export function ServiceSelection() {
                 </SelectContent>
               </Select>
               {errors.service && (
-                <p className="text-destructive text-sm mt-1">{errors.service}</p>
+                <p className="text-destructive text-xs sm:text-sm mt-1">{errors.service}</p>
               )}
             </div>
             
-            <div className="md:w-2/3 bg-muted rounded-lg p-4">
+            <div className="w-full sm:w-2/3 bg-muted rounded-lg p-3">
               {service ? (
                 <div className="animate-fade-in">
-                  <h4 className="font-medium text-lg">
+                  <h4 className="font-medium text-base sm:text-lg">
                     {serviceOptions.find(o => o.value === service)?.label}
                   </h4>
-                  <p className="text-muted-foreground mt-1 text-sm">
+                  <p className="text-muted-foreground mt-1 text-xs sm:text-sm">
                     {serviceOptions.find(o => o.value === service)?.description}
                   </p>
-                  <div className="mt-2 flex items-center text-sm text-balancee-blue dark:text-balancee-orange">
-                    <Clock className="h-4 w-4 mr-1" />
+                  <div className="mt-2 flex items-center text-xs sm:text-sm text-balancee-blue dark:text-balancee-orange">
+                    <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                     {serviceOptions.find(o => o.value === service)?.duration}
                   </div>
                 </div>
               ) : (
-                <p className="text-muted-foreground text-center py-4">
+                <p className="text-muted-foreground text-center text-sm py-3">
                   Select a service to see details
                 </p>
               )}

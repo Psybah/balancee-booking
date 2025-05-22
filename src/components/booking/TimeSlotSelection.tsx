@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useBooking } from "../../contexts/BookingContext";
 import { Button } from "../ui/button";
@@ -52,10 +51,10 @@ export function TimeSlotSelection() {
   };
 
   return (
-    <Card className="p-6 mt-6 glass-card animate-fade-in animation-delay-400 cosmic-gradient">
+    <Card className="p-3 sm:p-6 mt-4 sm:mt-6 glass-card animate-fade-in animation-delay-400 cosmic-gradient">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-2xl font-semibold">Available Time Slots</h2>
+          <h2 className="text-lg sm:text-2xl font-semibold">Available Time Slots</h2>
           <CollapsibleTrigger asChild>
             <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
               {isOpen ? (
@@ -67,32 +66,30 @@ export function TimeSlotSelection() {
             </Button>
           </CollapsibleTrigger>
         </div>
-        <p className="text-muted-foreground mb-4">
+        <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">
           {selectedStation.name} • Today
         </p>
-        <Separator className="my-4" />
+        <Separator className="my-3 sm:my-4" />
 
         <CollapsibleContent>
           {isLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <Skeleton key={i} className="h-12" />
+            <div className="grid grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <Skeleton key={i} className="h-10 sm:h-12" />
               ))}
             </div>
           ) : timeSlots.length > 0 ? (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {morningSlots.length > 0 && (
                 <div>
-                  <h3 className="text-md font-medium mb-2">Morning</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <h3 className="text-sm sm:text-md font-medium mb-2">Morning</h3>
+                  <div className="grid grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                     {morningSlots.map((slot) => (
                       <Button
                         key={slot.id}
-                        variant={
-                          selectedTimeSlot?.id === slot.id ? "default" : "outline"
-                        }
+                        variant={selectedTimeSlot?.id === slot.id ? "default" : "outline"}
                         disabled={!slot.available}
-                        className={`h-12 transition-all ${
+                        className={`h-10 sm:h-12 text-xs sm:text-sm transition-all ${
                           selectedTimeSlot?.id === slot.id
                             ? "bg-balancee-blue text-white dark:bg-balancee-orange"
                             : ""
@@ -108,16 +105,14 @@ export function TimeSlotSelection() {
 
               {afternoonSlots.length > 0 && (
                 <div>
-                  <h3 className="text-md font-medium mb-2">Afternoon</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <h3 className="text-sm sm:text-md font-medium mb-2">Afternoon</h3>
+                  <div className="grid grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                     {afternoonSlots.map((slot) => (
                       <Button
                         key={slot.id}
-                        variant={
-                          selectedTimeSlot?.id === slot.id ? "default" : "outline"
-                        }
+                        variant={selectedTimeSlot?.id === slot.id ? "default" : "outline"}
                         disabled={!slot.available}
-                        className={`h-12 transition-all ${
+                        className={`h-10 sm:h-12 text-xs sm:text-sm transition-all ${
                           selectedTimeSlot?.id === slot.id
                             ? "bg-balancee-blue text-white dark:bg-balancee-orange"
                             : ""
@@ -133,16 +128,14 @@ export function TimeSlotSelection() {
 
               {eveningSlots.length > 0 && (
                 <div>
-                  <h3 className="text-md font-medium mb-2">Evening</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <h3 className="text-sm sm:text-md font-medium mb-2">Evening</h3>
+                  <div className="grid grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                     {eveningSlots.map((slot) => (
                       <Button
                         key={slot.id}
-                        variant={
-                          selectedTimeSlot?.id === slot.id ? "default" : "outline"
-                        }
+                        variant={selectedTimeSlot?.id === slot.id ? "default" : "outline"}
                         disabled={!slot.available}
-                        className={`h-12 transition-all ${
+                        className={`h-10 sm:h-12 text-xs sm:text-sm transition-all ${
                           selectedTimeSlot?.id === slot.id
                             ? "bg-balancee-blue text-white dark:bg-balancee-orange"
                             : ""
@@ -157,22 +150,22 @@ export function TimeSlotSelection() {
               )}
 
               {timeSlots.every((slot) => !slot.available) && (
-                <p className="text-center text-muted-foreground mt-4">
+                <p className="text-center text-sm text-muted-foreground mt-4">
                   No available slots for today. Please try another station.
                 </p>
               )}
             </div>
           ) : (
-            <div className="text-center py-8">
-              <p className="text-muted-foreground">No time slots available.</p>
+            <div className="text-center py-6 sm:py-8">
+              <p className="text-sm text-muted-foreground">No time slots available.</p>
             </div>
           )}
         </CollapsibleContent>
       </Collapsible>
 
       {!isOpen && selectedTimeSlot && (
-        <div className="mt-4 bg-muted/20 p-3 rounded-md flex justify-between items-center">
-          <span className="font-medium">Selected: {formatTime(selectedTimeSlot.time)}</span>
+        <div className="mt-3 sm:mt-4 bg-muted/20 p-2 sm:p-3 rounded-md flex justify-between items-center">
+          <span className="text-sm sm:text-base font-medium">Selected: {formatTime(selectedTimeSlot.time)}</span>
           <Button 
             variant="outline" 
             size="sm"
@@ -184,7 +177,7 @@ export function TimeSlotSelection() {
       )}
 
       {errors.timeSlot && (
-        <p className="text-destructive text-sm mt-4">{errors.timeSlot}</p>
+        <p className="text-destructive text-xs sm:text-sm mt-3 sm:mt-4">{errors.timeSlot}</p>
       )}
     </Card>
   );
